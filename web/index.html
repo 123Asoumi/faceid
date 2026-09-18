@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BLOQZ — Verrouillage automatique par détection de visage</title>
+<style>
+  :root{
+    --bg:#0a1424; --bg2:#050b16; --surface:#101f38; --border:#20396a;
+    --blue:#5aa9ff; --text:#f2f7ff; --muted:#8fb4e6; --faint:#5c7aa8; --green:#3ddc97;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
+    background:radial-gradient(80% 60% at 50% 0%,#12244a 0%,var(--bg) 45%,var(--bg2) 100%);
+    color:var(--text);min-height:100vh;line-height:1.6;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  header{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+  header img{height:34px}
+  .hero{text-align:center;padding:40px 0 30px}
+  .hero .shark{max-width:340px;width:70%;filter:drop-shadow(0 20px 40px rgba(0,0,0,.5));margin-bottom:24px}
+  .hero h1{font-size:clamp(26px,5vw,44px);font-weight:800;letter-spacing:-.5px;margin-bottom:12px}
+  .hero p.tag{color:var(--muted);font-size:clamp(15px,2.4vw,19px);max-width:560px;margin:0 auto 30px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:#04101f;
+    font-weight:800;font-size:16px;border:none;border-radius:12px;padding:15px 30px;
+    text-decoration:none;cursor:pointer;transition:transform .15s,background .2s;
+  }
+  .btn:hover{background:#7bbcff;transform:translateY(-2px)}
+  .btn.secondary{background:transparent;color:var(--text);border:1px solid var(--border)}
+  .btn.secondary:hover{background:var(--surface);border-color:var(--blue)}
+  .meta{color:var(--faint);font-size:13px;margin-top:14px}
+  .grid{display:grid;grid-template-columns:1fr;gap:16px;margin:44px 0}
+  @media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+  .card{background:rgba(16,31,56,.6);border:1px solid var(--border);border-radius:16px;padding:22px}
+  .card h3{font-size:15px;margin-bottom:8px;color:var(--text)}
+  .card p{color:var(--muted);font-size:13.5px}
+  .card code{background:var(--bg2);border:1px solid var(--border);border-radius:6px;
+    padding:2px 7px;font-size:12.5px;color:var(--blue);display:inline-block}
+  .section{margin:40px 0}
+  .section h2{font-size:20px;margin-bottom:14px;letter-spacing:.3px}
+  ol{padding-left:20px;color:var(--muted)}
+  ol li{margin:6px 0}
+  .privacy{background:rgba(61,220,151,.08);border:1px solid rgba(61,220,151,.3);
+    border-radius:14px;padding:18px 20px;color:var(--muted);font-size:13.5px}
+  .privacy b{color:var(--text)}
+  a.inline{color:var(--blue)}
+  footer{border-top:1px solid var(--border);margin-top:50px;padding:24px 0;
+    color:var(--faint);font-size:12.5px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img src="wordmark.png" alt="BLOQZ">
+    <a class="btn secondary" href="#download">Télécharger</a>
+  </header>
+
+  <section class="hero">
+    <img class="shark" src="shark.png" alt="">
+    <h1>Votre écran se verrouille<br>quand vous n'êtes plus là.</h1>
+    <p class="tag">BLOQZ surveille votre webcam et verrouille automatiquement votre
+      session dès que vous vous éloignez. Rien n'est enregistré ni envoyé.</p>
+    <a class="btn" id="download" href="REMPLACER_PAR_URL_DU_EXE">⬇ Télécharger pour Windows</a>
+    <div class="meta">Windows 10/11 · ~<span id="size">109</span> Mo · Gratuit</div>
+  </section>
+
+  <div class="grid">
+    <div class="card"><h3>Verrouillage à l'absence</h3>
+      <p>Détection de visage en temps réel. Un compte à rebours s'affiche avant le verrouillage.</p></div>
+    <div class="card"><h3>100 % local</h3>
+      <p>Les images sont analysées sur votre appareil. Aucune capture stockée, aucune transmission.</p></div>
+    <div class="card"><h3>Fonds personnalisables</h3>
+      <p>Choisissez ou importez votre image ; les transitions se font par morphing.</p></div>
+    <div class="card"><h3>Windows &amp; Linux</h3>
+      <p>Verrouillage natif via l'API Windows ou <code>loginctl</code> / <code>xdg-screensaver</code> sous Linux.</p></div>
+  </div>
+
+  <section class="section">
+    <h2>Installation — Windows</h2>
+    <ol>
+      <li>Téléchargez <b>BLOQZ.exe</b> avec le bouton ci-dessus.</li>
+      <li>Double-cliquez sur le fichier.</li>
+      <li>Si Windows affiche « SmartScreen », cliquez <b>Informations complémentaires → Exécuter quand même</b>
+          (l'app n'est pas encore signée numériquement).</li>
+      <li>Au premier lancement, acceptez la politique de protection des données, puis placez-vous devant la caméra.</li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <h2>Installation — Linux</h2>
+    <ol>
+      <li>Installez Python 3, puis récupérez le code source.</li>
+      <li><code>pip install -r requirements.txt</code></li>
+      <li><code>python3 isdhine.py</code> (ou <code>./run_bloqz.sh</code>)</li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <div class="privacy">
+      <b>Protection des données.</b> BLOQZ traite le flux de votre webcam uniquement
+      pour détecter votre présence, de façon locale et en temps réel. Aucune image
+      n'est conservée ni transmise. Le traitement repose sur votre consentement,
+      conformément à la
+      <a class="inline" href="https://www.afapdp.org/wp-content/uploads/2018/06/Benin-Loi-2017-20-Portant-code-du-numerique-en-Republique-du-Benin.pdf">Loi n°2017-20 (Code du numérique du Bénin)</a>
+      et à la
+      <a class="inline" href="https://sgg.gouv.bj/doc/loi-2020-35/">Loi n°2020-35</a>.
+      Un écran de consentement s'affiche avant toute utilisation.
+    </div>
+  </section>
+
+  <footer>
+    BLOQZ — verrouillage automatique par détection de visage · Basé sur le projet open-source lock-on-absence
+  </footer>
+
+</div>
+</body>
+</html>
