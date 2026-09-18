@@ -13,6 +13,8 @@ run_isdhine.bat
 ```
 
 ### Linux
+📖 Un guide détaillé pas à pas (prérequis, dépannage, webcam) est disponible dans **[INSTALL-LINUX.md](INSTALL-LINUX.md)**.
+
 Installation en une seule fois :
 ```bash
 # 1. Prérequis système (exemple Debian/Ubuntu)
