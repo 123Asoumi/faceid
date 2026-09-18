@@ -1,7 +1,7 @@
-# Isdhine
+# Bloqz
 **"I see you. I protect you."**
 
-Isdhine est un outil de sécurité et de confidentialité qui utilise la webcam de l'ordinateur pour détecter la présence de l'utilisateur et verrouiller l'ordinateur en cas d'absence.
+Bloqz est un outil de sécurité et de confidentialité qui utilise la webcam de l'ordinateur pour détecter la présence de l'utilisateur et verrouiller l'ordinateur en cas d'absence.
 Il respecte la vie privée : le traitement se fait à 100% en local et le flux vidéo n'est jamais sauvegardé ni envoyé.
 
 ## Lancer l'application
@@ -18,4 +18,4 @@ run_isdhine.bat
 
 ## Source
 Inspiré par [Lock on Absence](https://github.com/handnewb/lock-on-absence).
-Isdhine inclut un MVP recréant les composants et la logique, basé sur un modèle de détection de visage Haar cascades intégré.
+Bloqz inclut un MVP recréant les composants et la logique, basé sur un modèle de détection de visage Haar cascades intégré.
