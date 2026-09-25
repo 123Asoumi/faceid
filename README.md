@@ -13,26 +13,27 @@ run_isdhine.bat
 ```
 
 ### Linux
-📖 Un guide détaillé pas à pas (prérequis, dépannage, webcam) est disponible dans **[INSTALL-LINUX.md](INSTALL-LINUX.md)**.
+📖 Guide détaillé (prérequis, clé SSH, dépannage, webcam, exécutable) : **[INSTALL-LINUX.md](INSTALL-LINUX.md)**.
 
-Installation en une seule fois :
+**Prérequis, une seule fois** (exemple Debian/Ubuntu) :
 ```bash
-# 1. Prérequis système (exemple Debian/Ubuntu)
 sudo apt update
-sudo apt install -y git python3 python3-venv python3-pip libgl1 libxcb-cursor0 xdg-utils
-
-# 2. Récupérer le projet
-git clone https://github.com/123Asoumi/faceid.git
-cd faceid
-
-# 3. Environnement virtuel + dépendances
-python3 -m venv .venv
-source .venv/bin/activate
-pip install --upgrade pip
-pip install -r requirements.txt
+sudo apt install -y git python3 python3-venv python3-pip libgl1 libglib2.0-0 \
+    libxcb-cursor0 libxcb-xinerama0 libxkbcommon-x11-0 xdg-utils
 ```
-> Fedora : `sudo dnf install -y git python3 python3-pip xdg-utils mesa-libGL`
-> Arch : `sudo pacman -S git python python-pip xdg-utils`
+> Fedora : `sudo dnf install -y git python3 python3-pip xdg-utils mesa-libGL xcb-util-cursor libxkbcommon-x11`
+> Arch : `sudo pacman -S --needed git python python-pip xdg-utils mesa xcb-util-cursor libxkbcommon-x11`
+
+**Installation en 3 commandes** (clone SSH) :
+```bash
+git clone git@github.com:123Asoumi/faceid.git && cd faceid
+python3 -m venv .venv && source .venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt
+./run_bloqz.sh
+```
+> Sans clé SSH, remplacez la 1ʳᵉ commande par :
+> `git clone https://github.com/123Asoumi/faceid.git && cd faceid`
+>
+> Les fois suivantes : `cd faceid && ./run_bloqz.sh`
 
 ## Lancer l'application
 

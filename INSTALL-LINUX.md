@@ -9,6 +9,33 @@ de A à Z, avec la résolution des problèmes les plus fréquents.
 
 ---
 
+## ⚡ Installation en 3 commandes (SSH)
+
+Pour les personnes pressées. Prérequis : avoir installé les paquets système
+(voir §1) **une seule fois**, et disposer d'une **clé SSH liée à GitHub**
+(voir §1 bis).
+
+```bash
+# 1) Cloner le dépôt et entrer dedans
+git clone git@github.com:123Asoumi/faceid.git && cd faceid
+
+# 2) Créer l'environnement et installer les dépendances
+python3 -m venv .venv && source .venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt
+
+# 3) Lancer l'application
+./run_bloqz.sh
+```
+
+Les fois suivantes, il suffit de :
+```bash
+cd faceid && ./run_bloqz.sh
+```
+
+> 💡 Pas de clé SSH ? Utilisez l'URL HTTPS à la place à l'étape 1 :
+> `git clone https://github.com/123Asoumi/faceid.git && cd faceid`
+
+---
+
 ## 1. Prérequis système
 
 Il faut Python 3, `git`, l'outil `venv`, ainsi que quelques bibliothèques
@@ -38,6 +65,29 @@ sudo pacman -S --needed git python python-pip xdg-utils \
 
 > Les paquets `libxcb-cursor0` / `xcb-util-cursor` sont nécessaires depuis
 > Qt 6.5 pour l'affichage via X11. Sans eux, l'app peut refuser de démarrer.
+
+### 1 bis. Configurer une clé SSH pour GitHub (pour le clone SSH)
+
+Nécessaire uniquement si vous clonez avec `git@github.com:...`. Sinon, sautez
+cette étape et utilisez l'URL HTTPS.
+
+```bash
+# Générer une clé (si vous n'en avez pas déjà une)
+ssh-keygen -t ed25519 -C "votre_email@example.com"
+# (appuyez sur Entrée pour accepter les valeurs par défaut)
+
+# Afficher la clé PUBLIQUE à copier
+cat ~/.ssh/id_ed25519.pub
+```
+
+Copiez la ligne affichée, puis ajoutez-la sur GitHub :
+**Settings → SSH and GPG keys → New SSH key** (https://github.com/settings/keys).
+
+Vérifiez que la connexion fonctionne :
+```bash
+ssh -T git@github.com
+```
+Vous devez voir : `Hi <votre_pseudo>! You've successfully authenticated...`
 
 ---
 
@@ -220,17 +270,13 @@ rm -rf faceid
 ## Résumé express
 
 ```bash
-# prérequis (Debian/Ubuntu)
+# prérequis, une seule fois (Debian/Ubuntu)
 sudo apt install -y git python3 python3-venv python3-pip libgl1 libglib2.0-0 \
     libxcb-cursor0 libxcb-xinerama0 libxkbcommon-x11-0 xdg-utils
 
-# installation
-git clone https://github.com/123Asoumi/faceid.git
-cd faceid
-python3 -m venv .venv && source .venv/bin/activate
-pip install --upgrade pip && pip install -r requirements.txt
-
-# lancement
+# installation en 3 commandes (SSH)
+git clone git@github.com:123Asoumi/faceid.git && cd faceid
+python3 -m venv .venv && source .venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt
 ./run_bloqz.sh
 
 # raccourci de bureau (optionnel)
