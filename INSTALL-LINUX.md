@@ -22,14 +22,16 @@ git clone git@github.com:123Asoumi/faceid.git && cd faceid
 # 2) Créer l'environnement et installer les dépendances
 python3 -m venv .venv && source .venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt
 
-# 3) Lancer l'application
-./run_bloqz.sh
+# 3) Créer l'icône sur le bureau + dans le menu des applications
+chmod +x install-desktop.sh && ./install-desktop.sh
 ```
 
-Les fois suivantes, il suffit de :
-```bash
-cd faceid && ./run_bloqz.sh
-```
+Après la 3ᵉ commande, **BLOQZ apparaît dans le menu des applications et sur le
+bureau** : lancez-le d'un simple clic (sous GNOME, au premier lancement :
+clic droit → « Autoriser le lancement »).
+
+> 💡 Vous préférez lancer en ligne de commande ? Utilisez `./run_bloqz.sh`
+> à la place de la 3ᵉ commande. Les fois suivantes : `cd faceid && ./run_bloqz.sh`.
 
 > 💡 Pas de clé SSH ? Utilisez l'URL HTTPS à la place à l'étape 1 :
 > `git clone https://github.com/123Asoumi/faceid.git && cd faceid`
@@ -274,11 +276,10 @@ rm -rf faceid
 sudo apt install -y git python3 python3-venv python3-pip libgl1 libglib2.0-0 \
     libxcb-cursor0 libxcb-xinerama0 libxkbcommon-x11-0 xdg-utils
 
-# installation en 3 commandes (SSH)
+# installation en 3 commandes (SSH) — crée aussi l'icône sur le bureau
 git clone git@github.com:123Asoumi/faceid.git && cd faceid
 python3 -m venv .venv && source .venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt
-./run_bloqz.sh
-
-# raccourci de bureau (optionnel)
 chmod +x install-desktop.sh && ./install-desktop.sh
+
+# (ou pour lancer directement en ligne de commande : ./run_bloqz.sh)
 ```

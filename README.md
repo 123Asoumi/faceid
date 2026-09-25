@@ -24,16 +24,18 @@ sudo apt install -y git python3 python3-venv python3-pip libgl1 libglib2.0-0 \
 > Fedora : `sudo dnf install -y git python3 python3-pip xdg-utils mesa-libGL xcb-util-cursor libxkbcommon-x11`
 > Arch : `sudo pacman -S --needed git python python-pip xdg-utils mesa xcb-util-cursor libxkbcommon-x11`
 
-**Installation en 3 commandes** (clone SSH) :
+**Installation en 3 commandes** (clone SSH) — crée aussi l'icône sur le bureau :
 ```bash
 git clone git@github.com:123Asoumi/faceid.git && cd faceid
 python3 -m venv .venv && source .venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt
-./run_bloqz.sh
+chmod +x install-desktop.sh && ./install-desktop.sh
 ```
+Après la 3ᵉ commande, **BLOQZ apparaît dans le menu des applications et sur le bureau** : lancez-le d'un simple clic (sous GNOME : clic droit → « Autoriser le lancement » au premier démarrage).
+
 > Sans clé SSH, remplacez la 1ʳᵉ commande par :
 > `git clone https://github.com/123Asoumi/faceid.git && cd faceid`
 >
-> Les fois suivantes : `cd faceid && ./run_bloqz.sh`
+> Pour lancer en ligne de commande à la place : `./run_bloqz.sh`
 
 ## Lancer l'application
 
