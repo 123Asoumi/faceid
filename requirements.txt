@@ -1,4 +1,7 @@
 # BLOQZ — runtime dependencies (Windows & Linux)
 PySide6>=6.6
-opencv-python>=4.8
+# headless : OpenCV sans ses propres bibliotheques Qt, pour eviter le conflit
+# avec PySide6 (sinon crash "Aborted / core dumped" au demarrage de l'interface).
+# L'app fait toute son interface via PySide6 et n'utilise aucune fonction GUI d'OpenCV.
+opencv-python-headless>=4.8,<5
 numpy>=1.24
