@@ -170,7 +170,41 @@ QT_QPA_PLATFORM=wayland ./run_bloqz.sh  # forcer Wayland
 
 ---
 
-## 8. Désinstaller
+## 8. (Option) Créer un exécutable autonome (« .exe » Linux)
+
+Sur Linux, l'équivalent d'un `.exe` est un **binaire exécutable** sans extension.
+On le génère avec **PyInstaller** à partir du fichier `BLOQZ.spec` fourni.
+
+```bash
+chmod +x build-linux.sh
+./build-linux.sh
+```
+
+Le binaire est créé dans **`dist/BLOQZ`**. Pour le lancer :
+```bash
+./dist/BLOQZ
+```
+
+Ce binaire embarque Python, les bibliothèques et les assets : il peut être copié
+et lancé **sans installer quoi que ce soit** sur la machine cible.
+
+> ⚠️ **Portabilité limitée.** Un binaire PyInstaller n'est pas garanti compatible
+> entre distributions ou versions de Linux différentes (la `glibc` du système de
+> compilation doit être ≤ celle de la machine cible). Pour une diffusion large :
+> - compilez sur la **distribution la plus ancienne** que vous voulez supporter
+>   (ex. une vieille Ubuntu LTS), **ou**
+> - fournissez plutôt un **AppImage** / **Flatpak** (formats conçus pour être
+>   portables), **ou**
+> - laissez chaque utilisateur compiler sur sa propre machine avec la commande
+>   ci-dessus.
+
+Vous pouvez ensuite pointer le raccourci de bureau vers ce binaire au lieu du
+script Python, en remplaçant la ligne `Exec=` du fichier `.desktop` par le chemin
+absolu de `dist/BLOQZ`.
+
+---
+
+## 9. Désinstaller
 
 ```bash
 # retirer le raccourci de bureau
